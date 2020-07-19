@@ -30,10 +30,18 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.black
         return view
     }()
+    
+    var label: UILabel = {
+        var label = UILabel()
+        label.text = "스냅킷 테스트"
+        
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.addSubview(view1)
+        view.addSubview(label)
         view1.addSubview(view2)
         view1.addSubview(view3)
         view1.snp.makeConstraints { (a) in
@@ -59,6 +67,11 @@ class ViewController: UIViewController {
             a.height.equalTo(view.snp.width).dividedBy(5)
             a.bottom.equalTo(view).offset(-44)
             a.left.equalTo(view)
+        }
+        
+        label.snp.makeConstraints{
+            $0.centerY.equalTo(view)
+            $0.left.equalTo(view.snp.left).offset(10)
         }
     }
 
